@@ -1,17 +1,45 @@
-import { Link, router } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { router } from "expo-router";
+import { ImageBackground, Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function Routeur() {
+const imageLachute = require("../assets/images/lachute.jpg");
+
+export default function Acceuil() {
   return (
-    <View>
-      <Text>Page principale</Text>
-      <Link href='/page2'>vers page 2</Link>
-      <Pressable onPress={() => router.push("/page3")}>
-        <Text>vers page 3</Text>
-      </Pressable>
-      
-      
-      
+    <View >
+        <ImageBackground source={imageLachute} style={styles.image}>
+          <Text style={styles.title}>La chute</Text>
+          <Pressable onPress={() => router.push("/recherche")}>
+            <Text style={styles.button}>Recherche</Text>
+          </Pressable>
+        </ImageBackground>
     </View>
   );
 }
+
+const styles = StyleSheet.create(
+  {
+    image :{
+      flex:1,
+      alignItems:"center",
+      justifyContent:"space-around"
+    },
+
+    title : {
+      fontSize : 80,
+      fontStyle : "italic",
+      textAlign : "center"
+      
+    },
+
+    button :{
+      padding : 10,
+      margin : "auto",
+      fontSize : 20,
+      backgroundColor : "lightgreen",
+      borderRadius : 10,
+      textAlign : "center"
+      
+    }
+
+  }
+)
